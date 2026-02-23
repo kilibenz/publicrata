@@ -1,0 +1,3 @@
+publicrata.eu, www.publicrata.eu {
+	reverse_proxy app:3000
+}
