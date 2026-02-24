@@ -15,6 +15,13 @@
       "when": 1771966595341,
       "tag": "0001_organic_sumo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1772006400000,
+      "tag": "0002_add_password_reset_tokens",
+      "breakpoints": true
     }
   ]
 }

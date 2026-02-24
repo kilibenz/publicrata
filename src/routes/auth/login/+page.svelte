@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 
 	let { form } = $props();
+
+	const passwordReset = $derived($page.url.searchParams.get('reset') === 'success');
 </script>
 
 <svelte:head>
@@ -10,6 +13,12 @@
 
 <div class="mx-auto max-w-md pt-12">
 	<h1 class="mb-6 text-center text-2xl font-bold text-gray-900">Login</h1>
+
+	{#if passwordReset}
+		<div class="mb-4 rounded-md bg-green-50 p-3 text-sm text-green-700">
+			Your password has been reset. You can now log in with your new password.
+		</div>
+	{/if}
 
 	{#if form?.error}
 		<div class="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">
@@ -40,6 +49,12 @@
 				required
 				class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
 			/>
+		</div>
+
+		<div class="flex justify-end">
+			<a href="/auth/forgot-password" class="text-sm text-brand-600 hover:underline">
+				Forgot password?
+			</a>
 		</div>
 
 		<button

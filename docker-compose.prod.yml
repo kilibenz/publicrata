@@ -8,6 +8,8 @@ services:
       - DATABASE_URL=postgresql://publicrata:${DB_PASSWORD}@postgres:5432/publicrata
       - BUNDESTAG_API_KEY=${BUNDESTAG_API_KEY}
       - EID_ENABLED=${EID_ENABLED:-false}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - BASE_URL=https://publicrata.eu
       - ORIGIN=https://publicrata.eu
       - PORT=3000
     depends_on:

@@ -26,13 +26,14 @@
     "vite": "^6.0.0"
   },
   "dependencies": {
-    "@node-rs/argon2": "^2.0.0",
-    "drizzle-orm": "^0.38.0",
-    "lucia": "^3.2.0",
     "@lucia-auth/adapter-drizzle": "^1.1.0",
-    "postgres": "^3.4.0",
-    "marked": "^15.0.0",
+    "@node-rs/argon2": "^2.0.0",
     "dompurify": "^3.2.0",
-    "jsdom": "^26.0.0"
+    "drizzle-orm": "^0.38.0",
+    "jsdom": "^26.0.0",
+    "lucia": "^3.2.0",
+    "marked": "^15.0.0",
+    "postgres": "^3.4.0",
+    "resend": "^6.9.2"
   }
 }
