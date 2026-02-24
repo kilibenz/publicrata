@@ -14,8 +14,7 @@ COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/drizzle ./drizzle
-COPY --from=builder /app/drizzle.config.ts ./
-COPY --from=builder /app/src/lib/server/db ./src/lib/server/db
+COPY --from=builder /app/migrate.js ./migrate.js
 
 ENV NODE_ENV=production
 ENV PORT=3000

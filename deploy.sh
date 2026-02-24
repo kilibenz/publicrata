@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SERVER="root@188.40.218.82"
+SERVER="root@46.225.238.89"
 APP_DIR="/opt/publicratos"
 
 echo "==> Deploying to $SERVER"
@@ -29,7 +29,7 @@ echo "==> Building and starting containers..."
 ssh $SERVER "cd $APP_DIR && docker compose -f docker-compose.prod.yml up -d --build"
 
 echo "==> Running database migrations..."
-ssh $SERVER "cd $APP_DIR && docker compose -f docker-compose.prod.yml exec app npx drizzle-kit migrate"
+ssh $SERVER "cd $APP_DIR && docker compose -f docker-compose.prod.yml exec app node migrate.js"
 
 echo ""
 echo "==> Deployed! Site should be live at https://publicrata.eu"
