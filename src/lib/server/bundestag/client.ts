@@ -3,7 +3,7 @@ import { env } from '$env/dynamic/private';
 const BASE_URL = 'https://search.dip.bundestag.de/api/v1';
 
 export interface DipVorgang {
-	id: number;
+	id: string;
 	titel: string;
 	abstract?: string;
 	vorgangstyp: string;
@@ -46,7 +46,7 @@ export async function fetchVorgaenge(params: {
 	const queryParams: Record<string, string> = {};
 	if (params.wahlperiode) queryParams['f.wahlperiode'] = String(params.wahlperiode);
 	if (params.cursor) queryParams['cursor'] = params.cursor;
-	if (params.updatedSince) queryParams['f.aktualisiert.start'] = params.updatedSince;
+	if (params.updatedSince) queryParams['f.aktualisiert.start'] = `${params.updatedSince}T00:00:00`;
 	return dipFetch<DipListResponse<DipVorgang>>('/vorgang', queryParams);
 }
 

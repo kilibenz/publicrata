@@ -43,7 +43,7 @@ export async function syncVorgaenge(
 async function upsertBatch(
 	documents: DipVorgang[]
 ): Promise<{ synced: number; created: number }> {
-	const dipIds = documents.map((d) => d.id);
+	const dipIds = documents.map((d) => Number(d.id));
 
 	const existing = await db
 		.select({ id: bundestagVorgaenge.id, dipId: bundestagVorgaenge.dipId })
@@ -51,10 +51,9 @@ async function upsertBatch(
 		.where(inArray(bundestagVorgaenge.dipId, dipIds));
 
 	const existingDipIds = new Set(existing.map((e) => e.dipId));
-	const existingMap = new Map(existing.map((e) => [e.dipId, e.id]));
 
-	const newDocs = documents.filter((d) => !existingDipIds.has(d.id));
-	const updateDocs = documents.filter((d) => existingDipIds.has(d.id));
+	const newDocs = documents.filter((d) => !existingDipIds.has(Number(d.id)));
+	const updateDocs = documents.filter((d) => existingDipIds.has(Number(d.id)));
 
 	for (const vorgang of updateDocs) {
 		await db
@@ -70,7 +69,7 @@ async function upsertBatch(
 				rawJson: vorgang as unknown as Record<string, unknown>,
 				syncedAt: new Date()
 			})
-			.where(eq(bundestagVorgaenge.dipId, vorgang.id));
+			.where(eq(bundestagVorgaenge.dipId, Number(vorgang.id)));
 	}
 
 	if (newDocs.length > 0) {
@@ -78,7 +77,7 @@ async function upsertBatch(
 			.insert(bundestagVorgaenge)
 			.values(
 				newDocs.map((vorgang) => ({
-					dipId: vorgang.id,
+					dipId: Number(vorgang.id),
 					titel: vorgang.titel,
 					abstract: vorgang.abstract ?? null,
 					vorgangstyp: vorgang.vorgangstyp,
