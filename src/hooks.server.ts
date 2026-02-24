@@ -1,5 +1,8 @@
 import type { Handle } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth/lucia';
+import { startScheduler } from '$lib/server/bundestag/scheduler';
+
+startScheduler();
 
 export const handle: Handle = async ({ event, resolve }) => {
 	const sessionId = event.cookies.get(lucia.sessionCookieName);

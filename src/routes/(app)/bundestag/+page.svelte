@@ -37,6 +37,11 @@
 		<p class="mt-2 text-gray-500">
 			Parliamentary proceedings from the Deutscher Bundestag. Vote on actual legislative items.
 		</p>
+		{#if data.lastSyncAt}
+			<p class="mt-1 text-xs text-gray-400">
+				Last synced: {new Date(data.lastSyncAt).toLocaleString('de-DE')} · Auto-sync every 6h
+			</p>
+		{/if}
 	</div>
 	{#if data.user}
 		<button

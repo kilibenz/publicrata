@@ -41,14 +41,12 @@ async function dipFetch<T>(endpoint: string, params: Record<string, string> = {}
 export async function fetchVorgaenge(params: {
 	wahlperiode?: number;
 	cursor?: string;
-	limit?: number;
 	updatedSince?: string;
 }): Promise<DipListResponse<DipVorgang>> {
 	const queryParams: Record<string, string> = {};
 	if (params.wahlperiode) queryParams['f.wahlperiode'] = String(params.wahlperiode);
 	if (params.cursor) queryParams['cursor'] = params.cursor;
-	if (params.limit) queryParams['f.limit'] = String(params.limit);
-	if (params.updatedSince) queryParams['f.datum.start'] = params.updatedSince;
+	if (params.updatedSince) queryParams['f.aktualisiert.start'] = params.updatedSince;
 	return dipFetch<DipListResponse<DipVorgang>>('/vorgang', queryParams);
 }
 

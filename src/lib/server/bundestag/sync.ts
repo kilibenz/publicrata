@@ -7,8 +7,8 @@ export async function syncVorgaenge(
 	wahlperiode = 20,
 	options?: { maxPages?: number; daysSince?: number }
 ): Promise<{ synced: number; created: number }> {
-	const maxPages = options?.maxPages ?? 5;
-	const daysSince = options?.daysSince ?? 30;
+	const maxPages = options?.maxPages ?? 10;
+	const daysSince = options?.daysSince ?? 365;
 
 	const sinceDate = new Date();
 	sinceDate.setDate(sinceDate.getDate() - daysSince);
@@ -23,7 +23,6 @@ export async function syncVorgaenge(
 		const result = await fetchVorgaenge({
 			wahlperiode,
 			cursor,
-			limit: 100,
 			updatedSince
 		});
 
