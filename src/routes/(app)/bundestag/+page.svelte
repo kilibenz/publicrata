@@ -28,7 +28,7 @@
 </script>
 
 <svelte:head>
-	<title>Bundestag Agenda - Publicratos</title>
+	<title>Bundestag Agenda - Publicrata</title>
 </svelte:head>
 
 <div class="mb-8 flex items-start justify-between">

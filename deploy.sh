@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SERVER="root@46.225.238.89"
-APP_DIR="/opt/publicratos"
+APP_DIR="/opt/publicrata"
 
 echo "==> Deploying to $SERVER"
 

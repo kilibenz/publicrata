@@ -8,7 +8,7 @@
 <nav class="border-b border-gray-200 bg-white shadow-sm">
 	<div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
 		<a href="/" class="text-xl font-bold tracking-tight text-brand-700">
-			Publicratos
+			Publicrata
 		</a>
 
 		<div class="hidden items-center gap-6 md:flex">
@@ -66,6 +66,7 @@
 			<a href="/bundestag" class="block py-2 text-sm text-gray-600">Bundestag</a>
 			<a href="/proposals" class="block py-2 text-sm text-gray-600">Proposals</a>
 			{#if user}
+				<a href="/thoughts" class="block py-2 text-sm text-gray-600">Gedanken</a>
 				<form method="POST" action="/auth/logout">
 					<button type="submit" class="block py-2 text-sm text-gray-600">Logout</button>
 				</form>

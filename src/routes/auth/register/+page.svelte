@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Register - Publicratos</title>
+	<title>Register - Publicrata</title>
 </svelte:head>
 
 <div class="mx-auto max-w-md pt-12">

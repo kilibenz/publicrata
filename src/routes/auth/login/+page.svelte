@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>Login - Publicratos</title>
+	<title>Login - Publicrata</title>
 </svelte:head>
 
 <div class="mx-auto max-w-md pt-12">

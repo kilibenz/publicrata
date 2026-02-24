@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-	<title>New Proposal - Publicratos</title>
+	<title>New Proposal - Publicrata</title>
 </svelte:head>
 
 <div class="mx-auto max-w-2xl">

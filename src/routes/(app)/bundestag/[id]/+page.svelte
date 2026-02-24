@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.topic.title} - Publicratos</title>
+	<title>{data.topic.title} - Publicrata</title>
 </svelte:head>
 
 <div class="mb-4">

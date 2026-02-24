@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Publicratos - Democratic Participation</title>
+	<title>Publicrata - Democratic Participation</title>
 </svelte:head>
 
 <div class="mb-8">

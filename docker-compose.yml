@@ -2,9 +2,9 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: publicratos
-      POSTGRES_PASSWORD: publicratos
-      POSTGRES_DB: publicratos
+      POSTGRES_USER: publicrata
+      POSTGRES_PASSWORD: publicrata
+      POSTGRES_DB: publicrata
     ports:
       - '5432:5432'
     volumes:

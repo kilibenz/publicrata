@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Proposals - Publicratos</title>
+	<title>Proposals - Publicrata</title>
 </svelte:head>
 
 <div class="mb-8 flex items-center justify-between">
