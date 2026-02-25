@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
-import { votingTopics, votes, comments } from '$lib/server/db/schema';
+import { votingTopics, votes, comments, bundestagVorgaenge } from '$lib/server/db/schema';
 import { eq, sql, desc, and } from 'drizzle-orm';
 import { isDataStale, getLastSyncTime } from '$lib/server/bundestag/scheduler';
 import { syncVorgaenge } from '$lib/server/bundestag/sync';
@@ -32,12 +32,14 @@ export const load: PageServerLoad = async ({ url }) => {
 			status: votingTopics.status,
 			description: votingTopics.description,
 			createdAt: votingTopics.createdAt,
+			datum: bundestagVorgaenge.datum,
 			voteCount: sql<number>`(SELECT count(*)::int FROM votes WHERE votes.topic_id = ${votingTopics.id})`,
 			commentCount: sql<number>`(SELECT count(*)::int FROM comments WHERE comments.topic_id = ${votingTopics.id})`
 		})
 		.from(votingTopics)
+		.leftJoin(bundestagVorgaenge, eq(votingTopics.bundestagVorgangId, bundestagVorgaenge.id))
 		.where(eq(votingTopics.type, 'bundestag'))
-		.orderBy(desc(votingTopics.createdAt))
+		.orderBy(desc(bundestagVorgaenge.datum), desc(votingTopics.createdAt))
 		.limit(limit)
 		.offset(offset);
 
