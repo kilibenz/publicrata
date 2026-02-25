@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { db } from '$lib/server/db';
-import { votingTopics, votes, comments } from '$lib/server/db/schema';
+import { votingTopics, votes, comments, bundestagVorgaenge } from '$lib/server/db/schema';
 import { eq, sql, desc } from 'drizzle-orm';
 
 export const load: PageServerLoad = async ({ url }) => {
@@ -25,8 +25,9 @@ export const load: PageServerLoad = async ({ url }) => {
 			commentCount: sql<number>`(SELECT count(*)::int FROM comments WHERE comments.topic_id = ${votingTopics.id})`
 		})
 		.from(votingTopics)
+		.leftJoin(bundestagVorgaenge, eq(votingTopics.bundestagVorgangId, bundestagVorgaenge.id))
 		.where(eq(votingTopics.status, 'open'))
-		.orderBy(desc(votingTopics.createdAt))
+		.orderBy(desc(sql`COALESCE(${bundestagVorgaenge.datum}, ${votingTopics.createdAt}::date)`))
 		.limit(limit)
 		.offset(offset);
 
