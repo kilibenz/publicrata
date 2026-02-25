@@ -10,8 +10,8 @@
 </svelte:head>
 
 <div class="mb-8">
-	<h1 class="text-3xl font-bold text-gray-900">Active Votes</h1>
-	<p class="mt-2 text-gray-500">
+	<h1 class="text-3xl font-bold text-gray-100">Active Votes</h1>
+	<p class="mt-2 text-gray-400">
 		Vote on Bundestag proceedings and community proposals. Your voice matters.
 	</p>
 </div>
@@ -19,13 +19,13 @@
 <div class="mb-4 flex gap-3">
 	<a
 		href="/bundestag"
-		class="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+		class="rounded-md border border-gray-700 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800"
 	>
 		Bundestag Agenda
 	</a>
 	<a
 		href="/proposals"
-		class="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+		class="rounded-md border border-gray-700 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800"
 	>
 		User Proposals
 	</a>

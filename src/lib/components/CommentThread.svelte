@@ -86,9 +86,9 @@
 </script>
 
 {#each comments as comment (comment.id)}
-	<div class="border-l-2 border-gray-100 pl-4 {depth > 0 ? 'ml-4' : ''} mt-3">
+	<div class="border-l-2 border-gray-800 pl-4 {depth > 0 ? 'ml-4' : ''} mt-3">
 		<div class="flex items-center gap-2 text-xs text-gray-500">
-			<span class="font-medium text-gray-700">{comment.authorName}</span>
+			<span class="font-medium text-gray-300">{comment.authorName}</span>
 			<span>&middot;</span>
 			<span>{timeAgo(comment.createdAt)}</span>
 		</div>
@@ -96,7 +96,7 @@
 		{#if editingId === comment.id}
 			<textarea
 				bind:value={editContent}
-				class="mt-1 w-full rounded border border-gray-300 p-2 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
+				class="mt-1 w-full rounded border border-gray-700 bg-gray-800 p-2 text-sm text-gray-100 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
 				rows="3"
 			></textarea>
 			<div class="mt-1 flex gap-2">
@@ -109,13 +109,13 @@
 				</button>
 				<button
 					onclick={() => (editingId = null)}
-					class="rounded bg-gray-100 px-3 py-1 text-xs text-gray-600 hover:bg-gray-200"
+					class="rounded bg-gray-800 px-3 py-1 text-xs text-gray-300 hover:bg-gray-700"
 				>
 					Cancel
 				</button>
 			</div>
 		{:else}
-			<p class="mt-1 text-sm whitespace-pre-wrap text-gray-800">{comment.content}</p>
+			<p class="mt-1 text-sm whitespace-pre-wrap text-gray-200">{comment.content}</p>
 
 			<div class="mt-1 flex gap-3 text-xs">
 				{#if userId}
@@ -124,7 +124,7 @@
 							replyingTo = replyingTo === comment.id ? null : comment.id;
 							replyContent = '';
 						}}
-						class="text-gray-400 hover:text-brand-600"
+						class="text-gray-500 hover:text-brand-500"
 					>
 						Reply
 					</button>
@@ -135,13 +135,13 @@
 							editingId = comment.id;
 							editContent = comment.content;
 						}}
-						class="text-gray-400 hover:text-brand-600"
+						class="text-gray-500 hover:text-brand-500"
 					>
 						Edit
 					</button>
 					<button
 						onclick={() => deleteComment(comment.id)}
-						class="text-gray-400 hover:text-red-600"
+						class="text-gray-500 hover:text-red-500"
 					>
 						Delete
 					</button>
@@ -154,7 +154,7 @@
 				<textarea
 					bind:value={replyContent}
 					placeholder="Write a reply..."
-					class="w-full rounded border border-gray-300 p-2 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
+					class="w-full rounded border border-gray-700 bg-gray-800 p-2 text-sm text-gray-100 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
 					rows="2"
 				></textarea>
 				<button

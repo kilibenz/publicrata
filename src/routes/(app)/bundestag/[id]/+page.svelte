@@ -40,48 +40,48 @@
 </svelte:head>
 
 <div class="mb-4">
-	<a href="/bundestag" class="text-sm text-brand-600 hover:underline">&larr; Back to Bundestag</a>
+	<a href="/bundestag" class="text-sm text-brand-500 hover:underline">&larr; Back to Bundestag</a>
 </div>
 
 <div class="grid gap-6 lg:grid-cols-3">
 	<div class="lg:col-span-2">
-		<div class="rounded-lg border border-gray-200 bg-white p-6">
+		<div class="rounded-lg border border-gray-800 bg-gray-900 p-6">
 			<div class="mb-3 flex items-center gap-2">
-				<span class="rounded bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-700">
+				<span class="rounded bg-brand-950 px-2 py-0.5 text-xs font-medium text-brand-400">
 					Bundestag
 				</span>
 				<span
 					class="rounded px-2 py-0.5 text-xs font-medium
-						{data.topic.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}"
+						{data.topic.status === 'open' ? 'bg-green-900/40 text-green-400' : 'bg-gray-800 text-gray-400'}"
 				>
 					{data.topic.status}
 				</span>
 			</div>
 
-			<h1 class="text-2xl font-bold text-gray-900">{data.topic.title}</h1>
+			<h1 class="text-2xl font-bold text-gray-100">{data.topic.title}</h1>
 
 			{#if data.topic.description}
-				<p class="mt-3 text-gray-600 whitespace-pre-wrap">{data.topic.description}</p>
+				<p class="mt-3 text-gray-300 whitespace-pre-wrap">{data.topic.description}</p>
 			{/if}
 
 			{#if data.vorgang}
-				<div class="mt-4 rounded-md bg-gray-50 p-4 text-sm">
-					<h3 class="mb-2 font-semibold text-gray-700">Parliamentary Details</h3>
-					<dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-600">
+				<div class="mt-4 rounded-md bg-gray-800 p-4 text-sm">
+					<h3 class="mb-2 font-semibold text-gray-200">Parliamentary Details</h3>
+					<dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-gray-400">
 						{#if data.vorgang.vorgangstyp}
-							<dt class="font-medium">Type</dt>
+							<dt class="font-medium text-gray-300">Type</dt>
 							<dd>{data.vorgang.vorgangstyp}</dd>
 						{/if}
 						{#if data.vorgang.beratungsstand}
-							<dt class="font-medium">Status</dt>
+							<dt class="font-medium text-gray-300">Status</dt>
 							<dd>{data.vorgang.beratungsstand}</dd>
 						{/if}
 						{#if data.vorgang.wahlperiode}
-							<dt class="font-medium">Wahlperiode</dt>
+							<dt class="font-medium text-gray-300">Wahlperiode</dt>
 							<dd>{data.vorgang.wahlperiode}</dd>
 						{/if}
 						{#if data.vorgang.datum}
-							<dt class="font-medium">Date</dt>
+							<dt class="font-medium text-gray-300">Date</dt>
 							<dd>{data.vorgang.datum}</dd>
 						{/if}
 					</dl>
@@ -89,7 +89,7 @@
 						href="https://dip.bundestag.de/vorgang/{slugify(data.vorgang.titel)}/{data.vorgang.dipId}"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="mt-3 inline-block text-brand-600 hover:underline"
+						class="mt-3 inline-block text-brand-500 hover:underline"
 					>
 						View on DIP Bundestag &rarr;
 					</a>
@@ -97,15 +97,15 @@
 			{/if}
 		</div>
 
-		<div class="mt-6 rounded-lg border border-gray-200 bg-white p-6">
-			<h2 class="mb-4 text-lg font-semibold text-gray-900">Discussion</h2>
+		<div class="mt-6 rounded-lg border border-gray-800 bg-gray-900 p-6">
+			<h2 class="mb-4 text-lg font-semibold text-gray-100">Discussion</h2>
 
 			{#if data.user}
 				<div class="mb-4">
 					<textarea
 						bind:value={newComment}
 						placeholder="Share your thoughts..."
-						class="w-full rounded-md border border-gray-300 p-3 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
+						class="w-full rounded-md border border-gray-700 bg-gray-800 p-3 text-sm text-gray-100 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
 						rows="3"
 					></textarea>
 					<button
@@ -117,13 +117,13 @@
 					</button>
 				</div>
 			{:else}
-				<p class="mb-4 text-sm text-gray-500">
-					<a href="/auth/login" class="text-brand-600 hover:underline">Login</a> to join the discussion.
+				<p class="mb-4 text-sm text-gray-400">
+					<a href="/auth/login" class="text-brand-500 hover:underline">Login</a> to join the discussion.
 				</p>
 			{/if}
 
 			{#if data.comments.length === 0}
-				<p class="py-6 text-center text-sm text-gray-400">No comments yet. Start the discussion!</p>
+				<p class="py-6 text-center text-sm text-gray-500">No comments yet. Start the discussion!</p>
 			{:else}
 				<CommentThread
 					comments={data.comments}

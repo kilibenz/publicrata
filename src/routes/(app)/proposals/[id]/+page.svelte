@@ -40,25 +40,25 @@
 </svelte:head>
 
 <div class="mb-4">
-	<a href="/proposals" class="text-sm text-brand-600 hover:underline">&larr; Back to Proposals</a>
+	<a href="/proposals" class="text-sm text-brand-500 hover:underline">&larr; Back to Proposals</a>
 </div>
 
 <div class="grid gap-6 lg:grid-cols-3">
 	<div class="lg:col-span-2">
-		<div class="rounded-lg border border-gray-200 bg-white p-6">
+		<div class="rounded-lg border border-gray-800 bg-gray-900 p-6">
 			<div class="mb-3 flex items-center gap-2">
-				<span class="rounded bg-purple-50 px-2 py-0.5 text-xs font-medium text-purple-700">
+				<span class="rounded bg-purple-900/40 px-2 py-0.5 text-xs font-medium text-purple-400">
 					Proposal
 				</span>
 				<span
 					class="rounded px-2 py-0.5 text-xs font-medium
-						{data.topic.status === 'open' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}"
+						{data.topic.status === 'open' ? 'bg-green-900/40 text-green-400' : 'bg-gray-800 text-gray-400'}"
 				>
 					{data.topic.status}
 				</span>
 			</div>
 
-			<h1 class="text-2xl font-bold text-gray-900">{data.topic.title}</h1>
+			<h1 class="text-2xl font-bold text-gray-100">{data.topic.title}</h1>
 
 			<div class="mt-2 flex gap-4 text-xs text-gray-500">
 				{#if data.topic.authorName}
@@ -69,19 +69,19 @@
 			</div>
 
 			{#if data.topic.description}
-				<p class="mt-4 text-gray-600 whitespace-pre-wrap">{data.topic.description}</p>
+				<p class="mt-4 text-gray-300 whitespace-pre-wrap">{data.topic.description}</p>
 			{/if}
 		</div>
 
-		<div class="mt-6 rounded-lg border border-gray-200 bg-white p-6">
-			<h2 class="mb-4 text-lg font-semibold text-gray-900">Discussion</h2>
+		<div class="mt-6 rounded-lg border border-gray-800 bg-gray-900 p-6">
+			<h2 class="mb-4 text-lg font-semibold text-gray-100">Discussion</h2>
 
 			{#if data.user}
 				<div class="mb-4">
 					<textarea
 						bind:value={newComment}
 						placeholder="Share your thoughts..."
-						class="w-full rounded-md border border-gray-300 p-3 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
+						class="w-full rounded-md border border-gray-700 bg-gray-800 p-3 text-sm text-gray-100 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none"
 						rows="3"
 					></textarea>
 					<button
@@ -93,13 +93,13 @@
 					</button>
 				</div>
 			{:else}
-				<p class="mb-4 text-sm text-gray-500">
-					<a href="/auth/login" class="text-brand-600 hover:underline">Login</a> to join the discussion.
+				<p class="mb-4 text-sm text-gray-400">
+					<a href="/auth/login" class="text-brand-500 hover:underline">Login</a> to join the discussion.
 				</p>
 			{/if}
 
 			{#if data.comments.length === 0}
-				<p class="py-6 text-center text-sm text-gray-400">No comments yet. Start the discussion!</p>
+				<p class="py-6 text-center text-sm text-gray-500">No comments yet. Start the discussion!</p>
 			{:else}
 				<CommentThread
 					comments={data.comments}

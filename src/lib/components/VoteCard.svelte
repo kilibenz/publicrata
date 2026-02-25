@@ -27,7 +27,6 @@
 
 		const previousVote = localVote;
 
-		// Optimistically update counts
 		if (previousVote) {
 			localCounts[previousVote as keyof typeof localCounts]--;
 		} else {
@@ -43,7 +42,6 @@
 				body: JSON.stringify({ topicId, choice })
 			});
 			if (!res.ok) {
-				// Revert on error
 				localVote = previousVote;
 				localCounts = counts;
 			}
@@ -62,15 +60,15 @@
 	];
 </script>
 
-<div class="rounded-lg border border-gray-200 bg-white p-4">
-	<h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-500">Your Vote</h3>
+<div class="rounded-lg border border-gray-800 bg-gray-900 p-4">
+	<h3 class="mb-3 text-sm font-semibold uppercase tracking-wide text-gray-400">Your Vote</h3>
 
 	{#if !isLoggedIn}
-		<p class="text-sm text-gray-500">
-			<a href="/auth/login" class="text-brand-600 hover:underline">Login</a> to vote.
+		<p class="text-sm text-gray-400">
+			<a href="/auth/login" class="text-brand-500 hover:underline">Login</a> to vote.
 		</p>
 	{:else if !isOpen}
-		<p class="text-sm text-gray-500">Voting is closed.</p>
+		<p class="text-sm text-gray-400">Voting is closed.</p>
 	{:else}
 		<div class="flex gap-2">
 			{#each choices as { key, label, color }}
@@ -78,7 +76,7 @@
 					onclick={() => castVote(key)}
 					disabled={submitting}
 					class="flex-1 rounded-md px-3 py-2 text-sm font-medium text-white transition-colors {color}
-						{localVote === key ? 'ring-2 ring-offset-2 ring-gray-900' : 'opacity-80'}"
+						{localVote === key ? 'ring-2 ring-offset-2 ring-offset-gray-900 ring-brand-500' : 'opacity-80'}"
 				>
 					{label}
 				</button>

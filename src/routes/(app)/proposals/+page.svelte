@@ -11,8 +11,8 @@
 
 <div class="mb-8 flex items-center justify-between">
 	<div>
-		<h1 class="text-3xl font-bold text-gray-900">Community Proposals</h1>
-		<p class="mt-2 text-gray-500">Proposals created by citizens for public voting.</p>
+		<h1 class="text-3xl font-bold text-gray-100">Community Proposals</h1>
+		<p class="mt-2 text-gray-400">Proposals created by citizens for public voting.</p>
 	</div>
 	{#if data.user}
 		<a

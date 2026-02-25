@@ -33,12 +33,12 @@
 
 <div class="mb-8 flex items-start justify-between">
 	<div>
-		<h1 class="text-3xl font-bold text-gray-900">Bundestag Agenda</h1>
-		<p class="mt-2 text-gray-500">
+		<h1 class="text-3xl font-bold text-gray-100">Bundestag Agenda</h1>
+		<p class="mt-2 text-gray-400">
 			Parliamentary proceedings from the Deutscher Bundestag. Vote on actual legislative items.
 		</p>
 		{#if data.lastSyncAt}
-			<p class="mt-1 text-xs text-gray-400">
+			<p class="mt-1 text-xs text-gray-500">
 				Last synced: {new Date(data.lastSyncAt).toLocaleString('de-DE')} · Auto-sync every 6h
 			</p>
 		{/if}
@@ -55,21 +55,21 @@
 </div>
 
 {#if syncMessage}
-	<div class="mb-4 rounded-md bg-blue-50 p-3 text-sm text-blue-700">
+	<div class="mb-4 rounded-md bg-brand-950 p-3 text-sm text-brand-300">
 		{syncMessage}
 	</div>
 {/if}
 
 {#if data.topics.length === 0 && !syncing}
-	<div class="rounded-lg border border-dashed border-gray-300 py-16 text-center">
-		<p class="text-gray-500">No Bundestag proceedings loaded yet.</p>
+	<div class="rounded-lg border border-dashed border-gray-700 py-16 text-center">
+		<p class="text-gray-400">No Bundestag proceedings loaded yet.</p>
 		{#if data.user}
-			<p class="mt-2 text-sm text-gray-400">
+			<p class="mt-2 text-sm text-gray-500">
 				Click <strong>Sync Bundestag</strong> to fetch the latest agenda from the DIP API.
 			</p>
 		{:else}
-			<p class="mt-2 text-sm text-gray-400">
-				<a href="/auth/login" class="text-brand-600 hover:underline">Login</a> to trigger a sync.
+			<p class="mt-2 text-sm text-gray-500">
+				<a href="/auth/login" class="text-brand-500 hover:underline">Login</a> to trigger a sync.
 			</p>
 		{/if}
 	</div>
